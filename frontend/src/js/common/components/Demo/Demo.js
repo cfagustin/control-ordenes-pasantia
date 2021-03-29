@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
+import Tabs, { TabPane } from 'rc-tabs';
+import TabContent from 'rc-tabs/lib/TabContent';
+import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 
 
 class Demo extends Component {
+
+  
+
     render() {
+        const {user} = this.props
+       
+        let info;
+        if (user.is_superuser){
+            info = <h1 style={{color:'black'}}>Bienvenido: <br/> <span style={{color:'gray', fontSize:'35px'}} >{user.username} <br/> {"Administrador"} </span></h1>
+        }else{
+            info = <h1 style={{color:'black'}}>Bienvenido: <br/> <span style={{color:'gray', fontSize:'35px'}} >{user.profile.nombre +" "+ user.profile.apellidos} <br/> {user.profile.rol.nombre_rol} </span></h1>
+        }
+
+
         return (
-            <div className="page-header py-4 no-gutters row">
-                <div className="text-sm-left mb-3 text-center text-md-left mb-sm-0 col-12 col-sm-4">
-                    <span
-                        className="text-uppercase page-subtitle">Escritorio ejemplo
-                    </span>
-                    <h3 className="page-title">Titulo secundario</h3>
-                </div>
-            </div>
+            <center>
+                <br/><br/><br/><br/><br/><br/>
+                {info}
+            </center>  
+          
         );
     }
 }
-
 export default Demo;

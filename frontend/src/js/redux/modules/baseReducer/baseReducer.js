@@ -64,6 +64,7 @@ export const createReducer = (storeId, endpoint, formName=undefined, resourceLis
         params.search = resource.search;
         dispatch(setLoader(true));
         api.get(endpoint, params).then((response) => {
+            console.log(" lista : ",response);
             dispatch(setData(response));
             dispatch(setPage(page));
         }).catch(() => {
@@ -73,8 +74,10 @@ export const createReducer = (storeId, endpoint, formName=undefined, resourceLis
     };
 
     const leer = id => (dispatch) => {
+        console.log("entro a leer basereducer1: ",id)
         dispatch(setLoader(true));
         api.get(`${endpoint}/${id}`).then((response) => {
+            console.log("entro a leer basereducer: ",response)
             dispatch(setItem(response));
             if (!!formName)
                 dispatch(initializeForm(formName, response));
@@ -112,8 +115,10 @@ export const createReducer = (storeId, endpoint, formName=undefined, resourceLis
 
     const eliminar = id => (dispatch) => {
         dispatch(setLoader(true));
+        console.log(id);
         api.eliminar(`${endpoint}/${id}`).then(() => {
             dispatch(listar());
+            console.log("entro1");
             NotificationManager.success('Registro eliminado', 'Éxito', 3000);
         }).catch(() => {
             NotificationManager.success('Error en la transacción', 'Éxito', 3000);

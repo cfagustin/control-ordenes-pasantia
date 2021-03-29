@@ -8,6 +8,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = '__all__'
 
+        depth = 1
+
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -16,6 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
+            'id',
+            'email',
             'username',
             'first_name',
             'last_name',
@@ -38,3 +42,21 @@ class UserReadSerializer(serializers.ModelSerializer):
             'email',
             'profile',
         )
+
+
+class UserInfoSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+    
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'first_name',
+            'last_name',
+            'is_superuser',
+            'is_staff',
+            'email',
+            'profile',
+        )
+
+        depth = 1

@@ -10,7 +10,7 @@ import _ from "lodash";
 
 
 export const renderField = ({
-                                input, placeholder, type, meta: { touched, error },
+                                input, placeholder, type, meta: { touched, error }, disabled = false,
                             }) => {
     const invalid = touched && error;
     return (
@@ -19,6 +19,7 @@ export const renderField = ({
                 {...input}
                 placeholder={placeholder}
                 type={type}
+                disabled={disabled}
                 className={classNames('form-control', { 'is-invalid': invalid })}
             />
             {invalid && (
@@ -365,6 +366,8 @@ export const renderDayPicker = ({className, disabled, maxDate, minDate, input, m
     )
 };
 
+
+
 export const renderDatePicker = ({className, disabled, maxDate, minDate, input, meta: { touched, error } }) => {
     const invalid = touched && error;
     return (
@@ -375,6 +378,7 @@ export const renderDatePicker = ({className, disabled, maxDate, minDate, input, 
                 maxDate={maxDate}
                 minDate={minDate}
                 value={input.value}
+                
             />
             {invalid && <div className="invalid-feedback">
                 {error}

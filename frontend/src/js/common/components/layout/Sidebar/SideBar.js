@@ -7,7 +7,16 @@ class SideBar extends Component {
     }
 
     render() {
-        const { toggleOpen, navToggle, logOut } = this.props;
+        const { toggleOpen, navToggle, logOut, user} = this.props;
+        console.log("datos: ", user)
+
+        let rol = 'Administrador'
+        if (user && user.profile && user.profile.rol){
+            rol = user.profile.rol.nombre_rol
+        }
+
+        
+
         return (
             <aside className={`main-sidebar px-0 col-12 col-md-3 col-lg-2 ${toggleOpen?'':'open'}`}>
                 <div className="main-navbar">
@@ -37,46 +46,171 @@ class SideBar extends Component {
                                 <span>Home</span>
                             </NavLink>
                         </li>
+
+                        {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <NavLink to="/page2" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/dashboard" exact className="nav-link " activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">edit</i>
+                                </div>
+                                <span>Dashboard</span>
+                            </NavLink>
+                        </li>
+                        }
+                        
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/rol" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Basic components</span>
+                                <span>Roles</span>
                             </NavLink>
                         </li>
+                        }
+
+                        {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <NavLink to="/grids" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/profesion" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Grids</span>
+                                <span>Profesiones</span>
                             </NavLink>
                         </li>
+                        }
+
+                        {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <NavLink to="/notifications" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/curso" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Notificaciones</span>
+                                <span>Cursos</span>
                             </NavLink>
                         </li>
+                        }
+
+                        {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <NavLink to="/tabs" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/nivel" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Tabs</span>
+                                <span>Niveles</span>
                             </NavLink>
                         </li>
+                        }
+
+                        {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <Link to="/login" onClick={logOut} className="nav-link">
+                            <NavLink to="/grado" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">lock</i>
+                                    <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Log Out</span>
-                            </Link>
+                                <span>Grados</span>
+                            </NavLink>
                         </li>
+                        }
+
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/ciclo" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Ciclos</span>
+                            </NavLink>
+                        </li>
+                        }
+                        
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/seccion" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Secciones</span>
+                            </NavLink>
+                        </li>
+                        }
+                        
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/catedratico" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Catedraticos</span>
+                            </NavLink>
+                        </li>
+                        }
+
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/estudiante" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Estudiantes</span>
+                            </NavLink>
+                        </li>
+                        }            
+
+                        {rol == 'Administrador' &&
+                        <li className="nav-item">
+                            <NavLink to="/asignacion" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Asignacion Curso</span>
+                            </NavLink>
+                        </li>
+                        }
+
+                        {rol == 'Catedratico' &&
+                        <li className="nav-item">
+                            <NavLink to="/dashboard-catedratico" exact className="nav-link " activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">edit</i>
+                                </div>
+                                <span>Dashboard</span>
+                            </NavLink>
+                        </li>
+                        }
+
+                        {rol == 'Catedratico' &&
+                        <li className="nav-item">
+                            <NavLink to="/asignacionestudiante" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Asignar Estudiante</span>
+                            </NavLink>
+                        </li>
+                        }
+
+                        {rol == 'Estudiante' &&
+                        <li className="nav-item">
+                            <NavLink to="/dashboard-estudiante" exact className="nav-link " activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">edit</i>
+                                </div>
+                                <span>Dashboard</span>
+                            </NavLink>
+                        </li>
+                        }
+                        
+                        {rol == 'Estudiante' &&
+                        <li className="nav-item">
+                            <NavLink to="/tareaestudiante" className="nav-link" activeClassName={'active'}>
+                                <div className="d-inline-block item-icon-wrapper">
+                                    <i className="material-icons">vertical_split</i>
+                                </div>
+                                <span>Mis Cursos</span>
+                            </NavLink>
+                        </li>
+                        }
                     </ul>
                 </div>
             </aside>

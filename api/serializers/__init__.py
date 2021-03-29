@@ -1,1 +1,16 @@
-from .user import UserSerializer, UserReadSerializer
+from .user import UserSerializer, UserReadSerializer, UserInfoSerializer
+from .rolSerializer import RolSerializer, RolRegistroSerializer
+from .profesionSerializer import ProfesionSerializer, ProfesionRegistroSerializer
+from .cursoSerializer import CursoSerializer, CursoRegistroSerializer
+from .nivelSerializer import NivelSerializer, NivelRegistroSerializer
+from .cicloSerializer import CicloSerializer, CicloRegistroSerializer
+from .seccionSerializer import SeccionSerializer, SeccionRegistroSerializer
+from .profileSerializer import ProfileSerializer, ProfileRegistroSerializer
+from .estudianteSerializer import EstudianteSerializer, EstudianteRegistroSerializer
+from .catedraticoSerializer import CatedraticoSerializer, CatedraticoRegistroSerializer
+from .gradoSerializer import GradoSerializer, GradoRegistroSerializer
+from .asignacionSerializer import AsignacionSerializer, AsignacionRegistroSerializer
+from .materialSerializer import MaterialSerializer, MaterialRegistroSerializer
+from .tareaSerializer import TareaSerializer, TareaRegistroSerializer
+from .tareaEstudianteSerializer import TareaEstudianteSerializer, TareaEstudianteRegistroSerializer
+from .asignacionEstudianteSerializer import AsignacionEstudianteSerializer, AsignacionEstudianteRegistroSerializer

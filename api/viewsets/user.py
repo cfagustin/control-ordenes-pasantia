@@ -11,17 +11,20 @@ from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
 from api.models import Profile
-from api.serializers import UserSerializer, UserReadSerializer
+from api.serializers import UserSerializer, UserReadSerializer, UserInfoSerializer
 
 
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.filter(is_active=True)
 
+    # FILTROS DE BUSQUEDA Y ORDENAMIENTO
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
+    # ESPECIFICA A QUE CAMPO SE LE ASIGNARA LOS FILTROS
     filter_fields = ("username", "first_name")
     search_fields = ("username", "first_name")
     ordering_fields = ("username", "first_name")
 
+    # FUNCION QUE VALIDA QUE SERIALIZADOR LLAMAR (list / retrieve)
     def get_serializer_class(self):
         """Define serializer for API"""
         if self.action == 'list' or self.action == 'retrieve':
@@ -29,6 +32,7 @@ class UserViewset(viewsets.ModelViewSet):
         else:
             return UserSerializer
 
+    # FUNCION QUE VALIDA LOS PERMISOS
     def get_permissions(self):
         """" Define permisos para este recurso """
         if self.action == "create" or self.action == "token":
@@ -36,6 +40,7 @@ class UserViewset(viewsets.ModelViewSet):
         else:
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
+
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -80,8 +85,10 @@ class UserViewset(viewsets.ModelViewSet):
                 perfil.avatar = File(avatar)
             profile = data.get("profile")
             if profile is not None:
-                perfil.phone = profile.get("phone", perfil.phone)
-                perfil.address = profile.get("address", perfil.address)
+                perfil.nombre = profile.get("nombre", perfil.nombre)
+                perfil.apellidos = profile.get("apellidos", perfil.apellidos)
+                perfil.telefono = profile.get("telefono", perfil.telefono)
+                perfil.direccion = profile.get("direccion", perfil.direccion)
                 perfil.gender = profile.get("gender", perfil.gender)
             user.save()
             perfil.save()
@@ -93,8 +100,9 @@ class UserViewset(viewsets.ModelViewSet):
     @action(methods=["get"], detail=False)
     def me(self, request, *args, **kwargs):
         user = request.user
-        serializer = UserReadSerializer(user)
+        serializer = UserInfoSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
 
     @action(methods=["post"], detail=False)
     def token(self, request, *args, **kwargs):
@@ -119,3 +127,6 @@ class UserViewset(viewsets.ModelViewSet):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Token.DoesNotExist:
             return Response({"detail": "session not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+    

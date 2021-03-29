@@ -15,8 +15,8 @@ class Navbar extends Component {
         this.setState({dropdownOpen: !this.state.dropdownOpen});
     };
     render() {
-        const { navToggle, logOut, user } = this.props;
-
+        const { navToggle, logOut, user} = this.props;
+        
         return (
             <nav className="align-items-stretch flex-md-nowrap p-0 navbar navbar-light">
                 <div className="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
@@ -28,7 +28,7 @@ class Navbar extends Component {
                             <img className="user-avatar rounded-circle mr-3"
                                  src={(user.profile && user.profile.avatar) ? user.profile.avatar : defaultAvatar}
                                  alt="User Avatar" />
-                            <span className="d-none d-md-inline-block">{user.first_name}</span>
+                            <span className="d-none d-md-inline-block">{user.username}</span>
                         </DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem header>Header</DropdownItem>
