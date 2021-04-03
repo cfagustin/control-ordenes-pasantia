@@ -8,8 +8,7 @@ class SideBar extends Component {
 
     render() {
         const { toggleOpen, navToggle, logOut, user} = this.props;
-        console.log("datos: ", user)
-
+       
         let rol = 'Administrador'
         if (user && user.profile && user.profile.rol){
             rol = user.profile.rol.nombre_rol
@@ -26,8 +25,9 @@ class SideBar extends Component {
                             <div className="d-table m-auto">
                                 <img id="main-logo"
                                     className="d-inline-block align-top mr-1"
-                                    src={require('assets/img/logo.png')}
-                                    alt="Logo" />
+                                    //src={require('assets/img/logo.png')}
+                                    //alt="Logo" 
+                                />
                             </div>
                         </a>
                         <a  className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
@@ -71,106 +71,18 @@ class SideBar extends Component {
 
                         {rol == 'Administrador' &&
                         <li className="nav-item">
-                            <NavLink to="/profesion" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/vendedor" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Profesiones</span>
+                                <span>Vendedores</span>
                             </NavLink>
                         </li>
                         }
 
-                        {rol == 'Administrador' &&
+                        {rol == 'Vendedor' &&
                         <li className="nav-item">
-                            <NavLink to="/curso" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Cursos</span>
-                            </NavLink>
-                        </li>
-                        }
-
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/nivel" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Niveles</span>
-                            </NavLink>
-                        </li>
-                        }
-
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/grado" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Grados</span>
-                            </NavLink>
-                        </li>
-                        }
-
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/ciclo" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Ciclos</span>
-                            </NavLink>
-                        </li>
-                        }
-                        
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/seccion" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Secciones</span>
-                            </NavLink>
-                        </li>
-                        }
-                        
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/catedratico" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Catedraticos</span>
-                            </NavLink>
-                        </li>
-                        }
-
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/estudiante" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Estudiantes</span>
-                            </NavLink>
-                        </li>
-                        }            
-
-                        {rol == 'Administrador' &&
-                        <li className="nav-item">
-                            <NavLink to="/asignacion" className="nav-link" activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">vertical_split</i>
-                                </div>
-                                <span>Asignacion Curso</span>
-                            </NavLink>
-                        </li>
-                        }
-
-                        {rol == 'Catedratico' &&
-                        <li className="nav-item">
-                            <NavLink to="/dashboard-catedratico" exact className="nav-link " activeClassName={'active'}>
+                            <NavLink to="/dashboard-vendedor" exact className="nav-link " activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">edit</i>
                                 </div>
@@ -179,35 +91,25 @@ class SideBar extends Component {
                         </li>
                         }
 
-                        {rol == 'Catedratico' &&
+                        {rol == 'Vendedor' &&
                         <li className="nav-item">
-                            <NavLink to="/asignacionestudiante" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/producto" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Asignar Estudiante</span>
+                                <span>Productos</span>
                             </NavLink>
                         </li>
                         }
 
-                        {rol == 'Estudiante' &&
+
+                        {rol == 'Vendedor' &&
                         <li className="nav-item">
-                            <NavLink to="/dashboard-estudiante" exact className="nav-link " activeClassName={'active'}>
-                                <div className="d-inline-block item-icon-wrapper">
-                                    <i className="material-icons">edit</i>
-                                </div>
-                                <span>Dashboard</span>
-                            </NavLink>
-                        </li>
-                        }
-                        
-                        {rol == 'Estudiante' &&
-                        <li className="nav-item">
-                            <NavLink to="/tareaestudiante" className="nav-link" activeClassName={'active'}>
+                            <NavLink to="/compra" className="nav-link" activeClassName={'active'}>
                                 <div className="d-inline-block item-icon-wrapper">
                                     <i className="material-icons">vertical_split</i>
                                 </div>
-                                <span>Mis Cursos</span>
+                                <span>Compras</span>
                             </NavLink>
                         </li>
                         }

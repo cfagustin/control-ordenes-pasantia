@@ -14,7 +14,7 @@ class Footer extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <span className="copyright ml-auto my-auto mr-2">Ciancoders</span>
+                        <span className="copyright ml-auto my-auto mr-2"></span>
                     </div>
                 </div>
             </footer>

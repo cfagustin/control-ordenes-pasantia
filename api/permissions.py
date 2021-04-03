@@ -1,6 +1,5 @@
 # Importar el modulo BasePermissions
 from rest_framework.permissions import BasePermission
-from api.models.catedratico import Catedratico
 from api.models.profile import Profile
 
 
@@ -14,7 +13,7 @@ class IsDirector(BasePermission):
       else:
          return False
 
-
+"""
 class IsCatedratico(BasePermission):
    def has_permission(self, request, view):
       if request.user:
@@ -36,7 +35,7 @@ class IsEstudiante(BasePermission):
       else:
          return False
 
-
+"""
  
     
 

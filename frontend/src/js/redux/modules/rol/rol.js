@@ -26,8 +26,6 @@ export const listar = () => (dispatch) => {
         dispatch({type: GUARDAR_LISTADO_ROL, data: response})
 
     }).catch((error) => {
-        console.log("error", error);
-
         NotificationManager.error(
             'Ocurrió un error al listar los roles', 
             'ERROR', 
@@ -53,8 +51,6 @@ export const leer = (id) => (dispatch) => {
         // response)) : Los datos con los que se va llenar el formulario
         dispatch(initializeForm('rol', response));
     }).catch((error) => {
-        console.log("error", error);
-
         NotificationManager.error(
             'Ocurrió un error al ver el rol', 
             'ERROR', 
@@ -89,8 +85,6 @@ export const registroRol = () => (dispatch, getStore) => {
         dispatch(push('/rol'));
         
     }).catch((error) => {
-        console.log("error", error);
-
         NotificationManager.error(
             'Ocurrió un error al registrar rol', 
             'ERROR', 
@@ -127,8 +121,6 @@ export const editarRol = () => (dispatch, getStore) => {
         dispatch(push('/rol'));
         
     }).catch((error) => {
-        console.log("error", error);
-
         NotificationManager.error(
             'Ocurrió un error al editar rol', 
             'ERROR', 
@@ -154,8 +146,6 @@ export const eliminar = (id) => (dispatch) => {
         dispatch(listar());
         
     }).catch((error) => {
-        console.log("error", error);
-
         NotificationManager.error(
             'Ocurrió un error al eliminar rol', 
             'ERROR', 
@@ -206,7 +196,7 @@ export const initialState = {
     // data se coloca en null ya que en la funcion listar nos devuelve un (Object)
     data: [],
     // registro se coloca en null aya que en la funcion leer nos devuelve un (Object)
-    registro: null
+    registro: []
 };
 
 

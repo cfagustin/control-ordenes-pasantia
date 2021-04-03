@@ -13,32 +13,13 @@ router = DefaultRouter()
 router.register(r'user', viewsets.UserViewset)
 # Registrar la url Rol a traves de un enrutador
 router.register(r'rol', viewsets.RolViewSet)
-# Registrar la url Profesion a traves de un enrutador
-router.register(r'profesion', viewsets.ProfesionViewSet)
-# Registrar la url Curso a traves de un enrutador
-router.register(r'curso', viewsets.CursoViewSet)
-# Registrar la url Nivel a traves de un enrutador
-router.register(r'nivel', viewsets.NivelViewSet)
-# Registrar la url Grado a traves de un enrutador
-router.register(r'grado', viewsets.GradoViewSet)
-# Registrar la url Ciclo a traves de un enrutador
-router.register(r'ciclo', viewsets.CicloViewSet)
-# Registrar la url Seccion a traves de un enrutador
-router.register(r'seccion', viewsets.SeccionViewSet)
-# Registrar la url Catedratico a traves de un enrutador
-router.register(r'catedratico', viewsets.CatedraticoViewSet)
-# Registrar la url Estudiante a traves de un enrutador
-router.register(r'estudiantes', viewsets.EstudianteViewSet)
-# Registrar la url Asignacion a traves de un enrutador
-router.register(r'asignacion', viewsets.AsignacionViewSet)
-# Registrar la url Asignacion a traves de un enrutador
-router.register(r'asignacionestudiante', viewsets.AsignacionEstudianteViewSet)
-# Registrar la url Asignacion a traves de un enrutador
-router.register(r'material', viewsets.MaterialViewSet)
-# Registrar la url Asignacion a traves de un enrutador
-router.register(r'tarea', viewsets.TareaViewSet)
-# Registrar la url tareaestudiante a traves de un enrutador
-router.register(r'tareaestudiante', viewsets.TareaEstudianteViewSet)
+# Registrar la url Vendedor a traves de un enrutador
+router.register(r'vendedor', viewsets.VendedorViewSet)
+# Registrar la url Producto a traves de un enrutador
+router.register(r'producto', viewsets.ProductoViewSet)
+# Registrar la url Compra a traves de un enrutador
+router.register(r'compra', viewsets.CompraViewSet)
+
 
 
 urlpatterns = [

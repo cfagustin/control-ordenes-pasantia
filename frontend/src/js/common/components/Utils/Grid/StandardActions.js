@@ -28,7 +28,7 @@ class Acciones extends Component {
     };
 
     render() {
-        const { id, ver, editar, eliminar, asignar, subir_doc, subir_tarea, calificar_tarea } = this.props;
+        const { id, ver, editar, eliminar, agregar, subir_doc, subir_tarea, calificar_tarea } = this.props;
 
         return (
 
@@ -42,8 +42,8 @@ class Acciones extends Component {
                 {(eliminar !== undefined) && (
                     <a className="px-2" style={{cursor: "pointer", color: "#c4183c"}} onClick={this.eliminar(id)}><i className="material-icons">delete</i></a>
                 )}
-                {(asignar !== undefined) && (
-                    <Link className="px-2"  to={`${asignar}/${id}/asignar`} ><i className="material-icons">person_add</i></Link>
+                {(agregar !== undefined) && (
+                    <Link className="px-2"  to={`${agregar}/${id}/agregar`} ><i className="material-icons">add</i></Link>
                 )}
                 {(subir_doc !== undefined) && (
                     <Link className="px-2" style={{cursor: "pointer", color: "#34495E"}} to={`${subir_doc}/${id}/listar`} ><i className="material-icons">upload_file</i></Link>
